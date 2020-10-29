@@ -19,6 +19,28 @@ public class Sort {
             return;
         }
 
+
+        /***
+         * arr = [0,1,2,....,n]
+         * 内外层比较
+         * 外层数组arr外 = [0,1,2...,n-1]
+         * 内层循环规律
+         *      i=0, arr内 =  [0,1,2...,n-1] 比较 arr[j]>arr[j+1]
+         *      i=1, arr内 =  [0,1,2...,n-2] 比较 arr[j]>arr[j+1]
+         *      ....
+         *      i=n-1, arr内 = [0] 比较 arr[j]>arr[j+1]
+         * 示例:
+         * arr = [3,2,1]
+         *
+         * for外,外层length = 2
+         * i=0时,for内,内层length=2 比较 ：
+         *    j=0时, arr[0]>arr[1]  3>2 true 交换位置 -> arr=[2,3,1]
+         *    j=1时, arr[1]>arr[2]  3>1 true 交换位置 -> arr[2,1,3]
+         * i=1时,for内,内层length=1 比较 ：
+         *   j=0时, arr[0]>arr[1]  2>1 true 交换位置 -> arr=[1,2,3]
+         *
+         *
+         */
         int forCount = 0;
         // 外层循环遍历size-1次轮询
         for (int i = 0; i < arr.length - 1; i++) {
@@ -43,6 +65,13 @@ public class Sort {
 
     /**
      * 选择排序
+     *
+     * 思路：
+     *    取出第一个数,与第二个、第三个...第n个数比较，得到最小的数，然后与第一个数交换
+     *    取出第二个数，与第三个、第四个...第n个数比较，得到最小的数，然后与第二个数交换
+     *    ....
+     *    依次比较得到最小数，交换
+     *
      */
     public static void selectSort(int[] arr) {
         if (arr == null || arr.length == 0) {
